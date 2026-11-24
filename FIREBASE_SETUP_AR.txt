@@ -1,0 +1,18 @@
+إعداد Firebase للمشروع
+
+1) افتحي Terminal داخل مجلد tourism_guide.
+2) ثبتي FlutterFire CLI إذا لم يكن مثبتًا: dart pub global activate flutterfire_cli
+3) سجلي الدخول إلى Firebase: firebase login
+4) اربطي المشروع بتطبيق Firebase: flutterfire configure
+   اختاري مشروع Firebase الخاص بك ومنصة Android (وأي منصات أخرى تحتاجينها).
+   الأمر سينشئ lib/firebase_options.dart ويضبط ملفات المنصة.
+5) من Firebase Console > Authentication > Sign-in method فعّلي Anonymous.
+6) من Firebase Console أنشئي Cloud Firestore Database.
+7) من تبويب Firestore > Rules انسخي قواعد الملف firestore.rules ثم اضغطي Publish.
+8) شغلي: flutter pub get ثم flutter run
+
+مكان حفظ البيانات:
+users/{uid}/favorites/{placeId}
+كل مستخدم له قائمة مفضلات منفصلة.
+
+ملاحظة: تسجيل الدخول والتسجيل الموجودان حاليًا في المشروع مجرد واجهات؛ لم يتم ربطهما بـ Firebase Authentication. لذلك يستخدم المشروع تسجيل دخول مجهولًا تلقائيًا لحفظ المفضلات لكل تثبيت/مستخدم مجهول. عند ربط تسجيل الدخول الحقيقي لاحقًا، ستنتقل المفضلات إلى حساب المستخدم بعد إضافة آلية نقل البيانات.
